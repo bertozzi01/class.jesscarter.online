@@ -108,112 +108,113 @@
     const todayStr = new Date().toLocaleDateString('en-US', options);
     document.getElementById('dynamic-date-top').innerText = todayStr;
 
-    // Cronograma Reverso: Sincronizado com os gatilhos exatos da VSL
+    // NOVO ARRAY SINCRONIZADO COM OS TEMPOS EXATOS (Em segundos)
     const chatData = [
-        // FASE 1: Lead e Problema (0 - 300s)
-        { t: 5, n: "John_Fisher", m: "If this works, I'm buying Jessica a beer. Skeptical but watching.", i: "1" },
-        { t: 15, n: "Mike_88", m: "Has anyone actually watched this till the end? Is it worth it?", i: "2" },
-        { t: 25, n: "Chris_G", m: "I thought squirting was just pee tbh or some porn camera trick.", i: "3" },
-        { t: 35, n: "Dave.T", m: "Bro, the girl at the beginning shaking… wtf, I've never seen that in real life.", i: "4" },
-        { t: 50, n: "John_Miller", m: "My wife always complains if it takes too long. Let’s see what this woman has to say.", i: "5" },
-        { t: 65, n: "Mark_Alpha", m: "The intro about Scarlett Johansson got me. Is that true?", i: "6" },
-        { t: 80, n: "BigRick77", m: "G-spot is a myth man, I’ve tried everything and it never works like in the movies.", i: "7" },
-        { t: 95, n: "Alex_B", m: "Is this a live stream or recorded?", i: "8" },
-        { t: 110, n: "Tom.Hansen", m: "If Leo DiCaprio and The Rock are paying 50 grand for this, I’m officially screwed lol.", i: "9" },
-        { t: 130, n: "Brett.M", m: "Bro the Hollywood elite are so lucky. Imagine having her as a private coach.", i: "10" },
-        { t: 150, n: "Ryan.Davis", m: "Man, this woman reads minds. My wife has been cold as ice for like 2 years. We feel like roommates.", i: "11" },
-        { t: 165, n: "Jordan_P", m: "Damn, the part about 'routine and obligation' hit way too close to home.", i: "12" },
-        { t: 180, n: "Mike_T", m: "The 'lioness' part... I need that. My marriage is a desert right now.", i: "13" },
-        
-        // FASE 2: Quebra de Mitos (Tamanho, Stamina, Idade) (200s - 300s)
-        { t: 210, n: "Eric_S", m: "Size myth is pure BS. Society messes with our heads so much about that.", i: "14" },
-        { t: 225, n: "Brian_72", m: "Did she really just say Mia Khalifa hates big ones? I need to see that interview.", i: "15" },
-        { t: 240, n: "Matt.Wilson", m: "Finally someone says it! Pounding for an hour isn't fun for anyone, my ex used to tap out after 15 mins.", i: "16" },
-        { t: 255, n: "Marcus_T", m: "I used to think I was a sex god because I lasted 30 mins... turns out I was just boring her to sleep.", i: "17" },
-        { t: 270, n: "J_Dawson", m: "'Women over 40 don't want sex' - Biggest lie ever. My wife is 44 and her drive is insane.", i: "18" },
-        { t: 285, n: "Frank_Vegas", m: "I'm sick of the 'nice guy' routine. I want to be the bad boy.", i: "19" },
-        
-        // FASE 3: A Demonstração e Técnica (300s - 635s)
-        { t: 300, n: "Tyler.J", m: "Wait, is she actually going to show it on camera?", i: "20" },
-        { t: 315, n: "Nick_R", m: "No way they don't take this video down. Watch this get banned in 10 minutes.", i: "21" },
-        { t: 330, n: "Adam_Smith", m: "Holy shit… she’s actually demonstrating it.", i: "22" },
-        { t: 345, n: "Rick_G", m: "circular motion... writing this down. Sounds legit.", i: "23" },
-        { t: 360, n: "Kyle.H", m: "The guy guiding the hand and she squirts multiple times... unbelievable.", i: "24" },
-        { t: 380, n: "Chris.W", m: "Look at the amount of liquid wtf. That is NOT normal.", i: "25" },
-        { t: 395, n: "Pete_99", m: "Jessica is a legend in the underground forums. Trust her.", i: "26" },
-        { t: 410, n: "Scott.T", m: "5 girls??? What kind of video is this my god.", i: "27" },
-        { t: 430, n: "Paul_J", m: "If the lesbians know the secret, I want the damn secret too.", i: "28" },
-        { t: 450, n: "Declan_S", m: "Wow, just the lesbian module alone is worth the $37.", i: "29" },
-        { t: 480, n: "Derek_B", m: "A breast massage that makes them cum? Is that even biologically possible?", i: "30" },
-        { t: 510, n: "Justin_K", m: "I thought this was just marketing BS but the explanation about the vagus nerve makes total sense. I'm a biology major.", i: "31" },
-        { t: 530, n: "Robert_King", m: "The anatomy lesson is actually better than my biology teacher's.", i: "32" },
-        { t: 550, n: "Nate.L", m: "Anyone else’s mind blown by that Tantric breast massage part? Rachel was losing her mind.", i: "33" },
-        { t: 570, n: "Shawn_W", m: "I'm just waiting for the catch. She’s probably gonna charge like $1,000 for this.", i: "34" },
-        { t: 590, n: "Jason_C", m: "An offshore server without censorship... that explains why she can show everything. Smart setup.", i: "35" },
-        { t: 610, n: "Luke_W", m: "Almost at the pitch. My credit card is ready if the price is right.", i: "36" },
-        { t: 625, n: "Marc_Strong", m: "Waiting for the button... hope I'm in the first 200.", i: "37" },
+        // 0 - 09:09 (Lead e Construção de Dor)
+        { t: 10, n: "John_Fisher", m: "If this works, I'm buying Jessica a beer. Skeptical but watching.", i: "1" },
+        { t: 45, n: "Mike_88", m: "Has anyone actually watched this till the end? Is it worth it?", i: "2" },
+        { t: 90, n: "Chris_G", m: "I thought squirting was just pee tbh or some porn camera trick.", i: "3" },
+        { t: 150, n: "Dave.T", m: "Bro, the girl at the beginning shaking… wtf, I've never seen that in real life.", i: "4" },
+        { t: 210, n: "John_Miller", m: "My wife always complains if it takes too long. Let’s see what this woman has to say.", i: "5" },
+        { t: 270, n: "Mark_Alpha", m: "The intro about Scarlett Johansson got me. Is that true?", i: "6" },
+        { t: 330, n: "BigRick77", m: "G-spot is a myth man, I’ve tried everything and it never works like in the movies.", i: "7" },
+        { t: 390, n: "Alex_B", m: "Is this a live stream or recorded?", i: "8" },
+        { t: 440, n: "Tom.Hansen", m: "If Leo DiCaprio and The Rock are paying 50 grand for this, I’m officially screwed lol.", i: "9" },
+        { t: 490, n: "Brett.M", m: "Bro the Hollywood elite are so lucky. Imagine having her as a private coach.", i: "10" },
+        { t: 530, n: "Ryan.Davis", m: "Man, this woman reads minds. My wife has been cold as ice for like 2 years. We feel like roommates.", i: "11" },
 
-        // FASE 4: O PITCH DE VENDAS E BÔNUS (636s+)
-        { t: 636, n: "Gary.M", m: "Wait, only $37? Are you kidding me?", i: "38" },
-        { t: 638, n: "John_Hardy", m: "BOUGHT! $37 is a joke. Access just hit my inbox! 🔥", i: "39" },
-        { t: 642, n: "Luke_D", m: "For 37 bucks I can’t even buy two pizzas nowadays. Worth the risk.", i: "40" },
-        { t: 648, n: "Mark_S", m: "Holy shiiit, it's really 37 bucks. Just used Apple Pay. Safe.", i: "41" },
-        { t: 652, n: "Ben_S", m: "Has anyone here bought it yet? Is the checkout safe?", i: "42" },
-        { t: 658, n: "Mark.R", m: "Replying to Ben: Yeah, just bought it with my credit card. Got the email with the login in literally 30 seconds. Secure site.", i: "43" },
-        { t: 665, n: "TheAlpha_99", m: "Risk-free trial and $100 back? I'd be stupid not to try.", i: "44" },
-        { t: 680, n: "Dan.H", m: "The buy button took a while to show up for me, I was about to close the page. Got it though!", i: "45" },
-        { t: 695, n: "Colin_R", m: "I’m clicking before this offshore server gets shut down.", i: "46" },
+        // 09:10 - 13:01 (550s) - DESTRUINDO MITOS (Tamanho, Stamina, Idade)
+        { t: 552, n: "Eric_S", m: "Size myth is pure BS. Society messes with our heads so much about that.", i: "14" },
+        { t: 565, n: "Marcus_T", m: "I used to think I was a sex god because I lasted 30 mins... turns out I was just boring her to sleep.", i: "17" },
+        { t: 580, n: "Matt.Wilson", m: "Finally someone says it! Pounding for an hour isn't fun for anyone, my ex used to tap out after 15 mins.", i: "16" },
+        { t: 605, n: "Brian_72", m: "Did she really just say Mia Khalifa hates big ones? I need to see that interview.", i: "15" },
+        { t: 630, n: "J_Dawson", m: "'Women over 40 don't want sex' - Biggest lie ever. My wife is 44 and her drive is insane.", i: "18" },
+        { t: 670, n: "Frank_Vegas", m: "I'm sick of the 'nice guy' routine. I want to be the bad boy.", i: "19" },
+        { t: 710, n: "Jordan_P", m: "Damn, the part about 'routine and obligation' hit way too close to home.", i: "12" },
+        { t: 750, n: "Mike_T", m: "The 'lioness' part... I need that. My marriage is a desert right now.", i: "13" },
+
+        // 13:02 - 18:12 (782s) - A DEMONSTRAÇÃO E TÉCNICA
+        { t: 785, n: "Tyler.J", m: "Wait, is she actually going to show it on camera?", i: "20" },
+        { t: 795, n: "Adam_Smith", m: "Holy shit… she’s actually demonstrating it.", i: "22" },
+        { t: 810, n: "Rick_G", m: "circular motion... writing this down. Sounds legit.", i: "23" },
+        { t: 830, n: "Chris.W", m: "Look at the amount of liquid wtf. That is NOT normal.", i: "25" },
+        { t: 860, n: "Kyle.H", m: "The guy guiding the hand and she squirts multiple times... unbelievable.", i: "24" },
+        { t: 900, n: "Nick_R", m: "No way they don't take this video down. Watch this get banned in 10 minutes.", i: "21" },
+        { t: 950, n: "Pete_99", m: "Jessica is a legend in the underground forums. Trust her.", i: "26" },
+        { t: 1020, n: "Jason_88", m: "I thought I was good in bed. Jessica is making me feel like a virgin lol.", i: "9" },
+
+        // 18:13 - 22:52 (1093s) - HISTÓRIA DA CONSULTA COM O MARIDO
+        { t: 1095, n: "Brandon_M", m: "I need to learn this. If I can make my girl do that, she'll never look at another dude.", i: "32" },
+        { t: 1140, n: "S_Thompson", m: "I've tried everything. If this works, it's a miracle.", i: "15" },
+        { t: 1200, n: "J_Russo", m: "This is the most honest video on the internet right now.", i: "20" },
+        { t: 1270, n: "Will_Power", m: "95% of men don't know this? I believe it. Most guys are clueless.", i: "13" },
+
+        // 22:53 - 33:29 (1373s) - THE HIDDEN SPOT (Vagus Nerve, Biologia)
+        { t: 1375, n: "Robert_King", m: "The anatomy lesson is actually better than my biology teacher's.", i: "32" },
+        { t: 1400, n: "Alpha_Male", m: "The U-Spot? Never heard of it. Watching closely.", i: "16" },
+        { t: 1450, n: "Justin_K", m: "I thought this was just marketing BS but the explanation about the vagus nerve makes total sense. I'm a biology major.", i: "31" },
+        { t: 1530, n: "Harry_K", m: "I've done this to my wife, and it really made her crazy with lust. Now I understand why...", i: "19" },
+        { t: 1650, n: "Tony_V", m: "Jessica, you are a goddess. Thanks for being so explicit.", i: "17" },
+        { t: 1780, n: "Sam_L", m: "I'm ready to drop the 'nice guy' act. Show me the way.", i: "22" },
+        { t: 1900, n: "Kevin_Miami", m: "Is the app available in Australia too?", i: "21" },
+
+        // 33:30 - 34:59 (2010s) - LESBIAN TECHNIQUES
+        { t: 2012, n: "Scott.T", m: "5 girls??? What kind of video is this my god.", i: "27" },
+        { t: 2030, n: "Paul_J", m: "If the lesbians know the secret, I want the damn secret too.", i: "28" },
+        { t: 2060, n: "Declan_S", m: "Wow, just the lesbian module alone is worth the price of anything.", i: "29" },
+        { t: 2080, n: "Tony.R", m: "Jessica has absolutely zero filter I love it 😂", i: "36" },
+
+        // 35:00 - 40:05 (2100s) - TANTRIC BREAST MASSAGE & PRÉ-PITCH
+        { t: 2105, n: "Derek_B", m: "A breast massage that makes them cum? Is that even biologically possible?", i: "30" },
+        { t: 2130, n: "Nate.L", m: "Anyone else’s mind blown by that Tantric breast massage part? Rachel was losing her mind.", i: "33" },
+        { t: 2200, n: "Shawn_W", m: "I'm just waiting for the catch. She’s probably gonna charge like $1,000 for this.", i: "34" },
+        { t: 2280, n: "Jason_C", m: "An offshore server without censorship... that explains why she can show everything. Smart setup.", i: "35" },
+        { t: 2340, n: "Luke_W", m: "Almost at the pitch. My credit card is ready if the price is right.", i: "36" },
+        { t: 2380, n: "Marc_Strong", m: "Waiting for the button... hope I'm in the first 200.", i: "37" },
+        { t: 2395, n: "Dave_K", m: "The 'Secret of orgasm App' sounds like a goldmine.", i: "25" },
+
+        // 40:06 (2406s) - REVELAÇÃO DO PREÇO ($37) - EFEITO MANADA EXPLOSIVO
+        { t: 2406, n: "Gary.M", m: "Wait, only $37? Are you kidding me?", i: "38" },
+        { t: 2408, n: "John_Hardy", m: "BOUGHT! $37 is a joke. Access just hit my inbox! 🔥", i: "39" },
+        { t: 2410, n: "Luke_D", m: "For 37 bucks I can’t even buy two pizzas nowadays. Worth the risk.", i: "40" },
+        { t: 2412, n: "Mark_S", m: "Holy shiiit, it's really 37 bucks. Just used Apple Pay. Safe.", i: "41" },
+        { t: 2415, n: "Ben_S", m: "Has anyone here bought it yet? Is the checkout safe?", i: "42" },
+        { t: 2418, n: "Mark.R", m: "Replying to Ben: Yeah, just bought it with my credit card. Got the email with the login in literally 30 seconds. Secure site.", i: "43" },
+        { t: 2422, n: "TheAlpha_99", m: "Risk-free trial and $100 back? I'd be stupid not to try.", i: "44" },
+        { t: 2428, n: "Josh_E", m: "10 cents a day... you literally can't argue with that math.", i: "54" },
+        { t: 2432, n: "Colin_R", m: "I’m clicking before this offshore server gets shut down.", i: "46" },
+        { t: 2435, n: "Dan.H", m: "The buy button took a while to show up for me, I was about to close the page. Got it though!", i: "45" },
+
+        // 40:40 (2440s) - VIP ZOOM CALL BONUS (Vagas limitadas)
+        { t: 2442, n: "Ian_M", m: "Holy shit I just secured the VIP Zoom spot!!! Can't believe it!", i: "47" },
+        { t: 2448, n: "Wesley_J", m: "The Zoom call bonus is insane. I was number 8!", i: "48" },
+        { t: 2460, n: "Pete_V", m: "Just secured my spot. 192 left guys, hurry up.", i: "32" },
+        { t: 2480, n: "Sean.B", m: "Guys, I just logged into the platform... This shit is HEAVY. It’s literal step-by-step HD videos.", i: "48" },
+        { t: 2520, n: "Rob_K", m: "I’m tired of being the nice, frustrated guy. Time to flip the script. Just bought it.", i: "49" },
+        { t: 2580, n: "Will_S", m: "If I do even half of what she just showed on my gf, she’s gonna have a heart attack tonight haha.", i: "51" },
+        { t: 2650, n: "Vince.C", m: "My card declined the first time, had to call the bank. It went through now! See you guys on the inside.", i: "58" },
+        { t: 2710, n: "Trevor_J", m: "I've been married 15 years, hasn't been hot since year 3. I really hope this works.", i: "59" },
+
+        // 45:29 (2729s) - BLACK BOX E AS RECEITAS SECRETAS
+        { t: 2730, n: "Zack_P", m: "What the hell is in that physical black box she's sending to our houses???", i: "44" },
+        { t: 2735, n: "Harrison_D", m: "Just ordered. Does the black box arrive in discreet packaging? My wife gets the mail.", i: "3" },
+        { t: 2740, n: "Troy_S", m: "Replying to Harrison: She said no sender, no label. You should be good bro.", i: "4" },
+        { t: 2750, n: "Carter_M", m: "Can't wait for that black box to arrive.", i: "22" },
+        { t: 2755, n: "Seth_M", m: "Just grabbed my spot. The mystery box better be good Jessica!", i: "57" },
+        { t: 2765, n: "Evan.G", m: "The Brazzers baking soda trick... man, if that’s natural and actually works I can finally stop buying pills.", i: "45" },
+        { t: 2775, n: "Leo.M", m: "The Baking Soda trick is crazy... I tried it once years ago and it works, but I forgot the exact measurements. Need this!", i: "5" },
         
-        // Mencionou o Bônus do Zoom (VIP para os 10 primeiros)
-        { t: 710, n: "Ian_M", m: "Holy shit I just secured the VIP Zoom spot!!! Can't believe it!", i: "47" },
-        { t: 725, n: "Wesley_J", m: "The Zoom call bonus is insane. I was number 8!", i: "48" },
-        
-        // Mencionou a Caixa Misteriosa (Black Box)
-        { t: 745, n: "Zack_P", m: "What the hell is in that physical black box she's sending to our houses???", i: "49" },
-        { t: 760, n: "Harrison_D", m: "Just ordered. Does the black box arrive in discreet packaging? My wife gets the mail.", i: "50" },
-        { t: 770, n: "Troy_S", m: "Replying to Harrison: She said no sender, no label. You should be good bro.", i: "51" },
-        { t: 785, n: "Carter_M", m: "Can't wait for that black box to arrive.", i: "52" },
-        
-        // Mencionou as Receitas (Baking Soda / Brazzers)
-        { t: 800, n: "Evan.G", m: "The Brazzers baking soda trick... man, if that’s natural and actually works I can finally stop buying pills.", i: "53" },
-        { t: 815, n: "Leo.M", m: "The Baking Soda trick is crazy... I tried it once years ago and it works, but I forgot the exact measurements. Need this!", i: "54" },
-        
-        // FASE 5: Manutenção do Chat (Sustentando a conversão até o final do vídeo)
-        { t: 840, n: "Cam_W", m: "The 30-day guarantee removes all the risk. If it sucks I'll just ask for my money back. I'm in.", i: "55" },
-        { t: 870, n: "Sean.B", m: "Guys, I just logged into the platform... This shit is HEAVY. It’s literal step-by-step HD videos.", i: "56" },
-        { t: 900, n: "Rob_K", m: "I’m tired of being the nice, frustrated guy. Time to flip the script. Just bought it.", i: "57" },
-        { t: 930, n: "Will_S", m: "If I do even half of what she just showed on my gf, she’s gonna have a heart attack tonight haha.", i: "58" },
-        { t: 960, n: "Greg.P", m: "This is wild. I’ve never seen anyone break down the female body like this, not even doctors.", i: "59" },
-        { t: 1000, n: "Josh_E", m: "10 cents a day... you literally can't argue with that math.", i: "60" },
-        { t: 1050, n: "Seth_M", m: "Just grabbed my spot. The mystery box better be good Jessica!", i: "61" },
-        { t: 1100, n: "Vince.C", m: "My card declined the first time, had to call the bank. It went through now! See you guys on the inside.", i: "62" },
-        { t: 1150, n: "Trevor_J", m: "I've been married 15 years, hasn't been hot since year 3. I really hope this works.", i: "63" },
-        { t: 1200, n: "Owen.D", m: "'She rides his phantom dick' - that line goes hard af.", i: "64" },
-        { t: 1260, n: "Jake_W", m: "Just watching the VSL got me bricked up not gonna lie.", i: "65" },
-        { t: 1320, n: "Mitchell_S", m: "I'm buying this right now just so no other guy learns it before me.", i: "66" },
-        { t: 1380, n: "Chase_R", m: "Wait, she shows it on her own body? Respect. That takes balls.", i: "67" },
-        { t: 1450, n: "Dustin_H", m: "If this actually makes her stop faking it, I’ll pay triple.", i: "68" },
-        { t: 1520, n: "Cody_B", m: "I always thought the G-spot was it. Mind blown.", i: "69" },
-        { t: 1600, n: "Travis_K", m: "The 'dry orgasm' is exactly what happens to my wife. She shakes but nothing comes out and she just gets frustrated.", i: "70" },
-        { t: 1680, n: "Wyatt.T", m: "I'm pulling my wallet out right now.", i: "71" },
-        { t: 1760, n: "Spencer_L", m: "The offshore server thing is genius. Fuck the algorithms.", i: "72" },
-        { t: 1850, n: "Dylan_G", m: "$37 for 69 advanced techniques? That’s like 50 cents a technique.", i: "73" },
-        { t: 1950, n: "Cole_P", m: "Got my access! The interface looks clean, watching the first module now.", i: "1" },
-        { t: 2050, n: "Bradley.W", m: "Honestly I was skeptical but the testimonials from the porn stars convinced me. If Johnny Sins uses this, it's legit.", i: "2" },
-        { t: 2150, n: "Simon_R", m: "The part about women talking in the group chats is 100% facts. They tell each other EVERYTHING.", i: "3" },
-        { t: 2250, n: "Felix.G", m: "I'm taking the leap. Let's awaken God Mode.", i: "4" },
-        { t: 2350, n: "Gavin_T", m: "Just got it. Wish me luck tonight boys.", i: "5" },
-        { t: 2450, n: "Victor_H", m: "Is it a one time payment or a subscription?", i: "6" },
-        { t: 2460, n: "Eli_M", m: "Replying to Victor: She said one-time payment of $37.", i: "7" },
-        { t: 2550, n: "Jesse.W", m: "I’m sold. The fact that she actually cares about guys getting better instead of just blaming us is refreshing.", i: "8" },
-        { t: 2650, n: "Austin_R", m: "Imagine making her squirt 10 times in a row... I’d feel like Superman.", i: "9" },
-        { t: 2750, n: "Corey_B", m: "I'm in. Let's see if this Hollywood secret is the real deal.", i: "10" },
-        { t: 2800, n: "Grant.M", m: "Payment successful! Let’s gooooo!", i: "11" },
-        { t: 2850, n: "Hunter_C", m: "I’ve spent more than $37 on a few drinks at the bar trying to get laid and went home alone. This is a no-brainer.", i: "12" },
-        { t: 2900, n: "Logan_D", m: "If she actually cries from pleasure tonight I'm coming back to thank you Jessica.", i: "13" },
-        { t: 2950, n: "Mason_R", m: "Just the thought of her begging me... damn. I bought it.", i: "14" },
-        { t: 2980, n: "Julian.R", m: "Shut up and take my money.", i: "15" },
-        { t: 2995, n: "Miles_B", m: "Just locked my access. Time to become a legend.", i: "16" }
+        // 2780s ATÉ O FIM - ESCASSEZ E FECHAMENTO
+        { t: 2800, n: "Cam_W", m: "The 30-day guarantee removes all the risk. If it sucks I'll just ask for my money back. I'm in.", i: "47" },
+        { t: 2820, n: "Sam_Houston", m: "Confirmed: the charge is discreet. 'Digital Education'. No issues.", i: "34" },
+        { t: 2840, n: "M_Miller", m: "Best 37 dollars I've ever spent. Period.", i: "36" },
+        { t: 2860, n: "Steve_Alpha", m: "I was married for 20 years. Wife just called me 'legend'. Thanks Jessica.", i: "37" },
+        { t: 2880, n: "Pete_99", m: "Only 140 spots left now. Glad I got mine.", i: "41" },
+        { t: 2900, n: "B_Jordan", m: "I'd pay $500 for this. $37 is literally a gift.", i: "44" },
+        { t: 2920, n: "V_Smith", m: "Got it! Time to be the 1% of men she never forgets.", i: "45" },
+        { t: 2940, n: "Julian.R", m: "Shut up and take my money.", i: "24" },
+        { t: 2960, n: "Miles_B", m: "Just locked my access. Time to become a legend.", i: "25" },
+        { t: 2980, n: "Hunter_C", m: "I’ve spent more than $37 on a few drinks at the bar trying to get laid and went home alone. This is a no-brainer.", i: "16" }
     ];
 
     let triggeredIdx = new Set();
