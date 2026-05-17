@@ -24,8 +24,11 @@
     body { background-color: #1a1a1a; color: #ffffff; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; margin: 0; }
     header { background-color: #000; padding: 12px 16px; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #222; }
     .container { max-width: 1024px; margin: 0 auto; padding: 0 16px; }
-    .video-container { max-width: 896px; margin: 10px auto; }
-    @media (max-width: 640px) { .container { padding: 0 12px; } .video-container { margin: 0 -12px; } }
+    
+    /* A classe video-container limita exatamente a largura abaixo do video */
+    .video-container { max-width: 896px; margin: 10px auto; width: 100%; }
+    
+    @media (max-width: 640px) { .container { padding: 0 12px; } .video-container { margin: 0 auto; padding: 0 12px; } }
     .bg-card { background-color: #2d2d2d; border-radius: 8px; padding: 16px; margin-bottom: 16px; margin-top: 16px; }
     .text-primary { color: #ff9000; }
     .bg-primary { background-color: #ff9000; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
@@ -35,10 +38,14 @@
     .live-dot { height: 8px; width: 8px; background-color: #ff0000; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
     @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
     
+    #static-comments-container { max-height: none; overflow-y: visible; }
+    .comment-row { display: flex; gap: 12px; margin-bottom: 15px; border-bottom: 1px solid #3d3d3d; padding-bottom: 10px; }
+    .see-more-btn { background-color: #333; color: #fff; border: 1px solid #444; padding: 12px; border-radius: 6px; width: 100%; font-weight: bold; cursor: pointer; transition: 0.2s; margin-top: 10px; }
+    .see-more-btn:hover { background-color: #444; color: #ff9000; }
+    
     footer a { color: #666; text-decoration: none; margin: 0 10px; }
     footer a:hover { color: #ff9000; }
 
-    /* Animação do botão da oferta */
     @keyframes pulse-fast {
         0%, 100% { transform: scale(1); }
         50% { transform: scale(1.05); }
@@ -58,120 +65,126 @@
   </header>
 
   <main class="container">
+    
     <div class="video-container">
-        <vturb-smartplayer id="vid-69c1eae3137969468e8020e2" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/63a99c38-2db9-4f4c-b696-b0c6298f2536/players/69c1eae3137969468e8020e2/v4/player.js", s.async=!0,document.head.appendChild(s); </script>  
+        <vturb-smartplayer id="vid-69f40f5981adc197d7d80aed" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/63a99c38-2db9-4f4c-b696-b0c6298f2536/players/69f40f5981adc197d7d80aed/v4/player.js", s.async=!0,document.head.appendChild(s); </script>   
     </div>
 
-    <div class="bg-card">
-      <h1 style="font-size: 1.3rem; margin-bottom: 12px; font-weight: 800; line-height: 1.2;">HOW TO MAKE HER SQUIRT (TUTORIAL)</h1>
-      <div style="display:flex; gap:12px; font-size: 0.875rem; margin-bottom:16px;">
-        <span class="text-gray"><i class="fas fa-eye"></i> 523,569 views</span>
-        <span style="color: #ff4444; font-weight: bold;"><span class="live-dot"></span> LIVE • <span id="dynamic-date-top"></span></span>
+    <div class="video-container">
+      <div class="bg-card" style="margin-top: 0;">
+        <h1 style="font-size: 1.3rem; margin-bottom: 12px; font-weight: 800; line-height: 1.2;">HOW TO MAKE HER SQUIRT (TUTORIAL)</h1>
+        <div style="display:flex; gap:12px; font-size: 0.875rem; margin-bottom:16px;">
+          <span class="text-gray"><i class="fas fa-eye"></i> 523,569 views</span>
+          <span style="color: #ff4444; font-weight: bold;"><span class="live-dot"></span> LIVE • <span id="dynamic-date-top"></span></span>
+        </div>
+        <div style="display:flex; align-items:center;">
+          <img src="roxy.jpg" class="rounded-full" style="width: 44px; height: 44px; margin-right: 12px; border: 2px solid #ff9000;">
+          <div style="flex-grow: 1;">
+            <h3 style="margin: 0; font-size: 1rem;">Jessica Carter</h3>
+            <p class="text-gray" style="margin: 0;">1.5M followers</p>
+          </div>
+          <button class="bg-primary">Follow</button>
+        </div>
       </div>
-      <div style="display:flex; align-items:center;">
-        <img src="roxy.jpg" class="rounded-full" style="width: 44px; height: 44px; margin-right: 12px; border: 2px solid #ff9000;">
-        <div style="flex-grow: 1;">
-          <h3 style="margin: 0; font-size: 1rem;">Jessica Carter</h3>
-          <p class="text-gray" style="margin: 0;">1.5M followers</p>
+    </div>
+
+    <div id="comentarios-vsl" class="video-container">
+      <div class="bg-card">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px;">
+            <h3 style="margin: 0; font-size: 1.1rem;">Comments (44)</h3>
         </div>
-        <button class="bg-primary">Follow</button>
+        
+        <div id="static-comments-container">
+            <div class="comment-row"><img src="https://randomuser.me/api/portraits/men/11.jpg" class="rounded-full" style="width: 36px; height: 36px;"><div><p style="margin: 0; font-weight: bold; font-size: 0.85rem;">Chris_G <span class="text-gray" style="font-weight: normal; margin-left: 8px;">15 min ago</span></p><p style="margin: 4px 0; color: #d1d5db; font-size: 0.85rem;">Wait, did she really just show that on camera? How is this video still up?</p></div></div>
+            <div class="comment-row"><img src="https://randomuser.me/api/portraits/men/12.jpg" class="rounded-full" style="width: 36px; height: 36px;"><div><p style="margin: 0; font-weight: bold; font-size: 0.85rem;">Dave.T <span class="text-gray" style="font-weight: normal; margin-left: 8px;">32 min ago</span></p><p style="margin: 4px 0; color: #d1d5db; font-size: 0.85rem;">If Leonardo DiCaprio is paying 50 grand to learn this, what chance do the rest of us have lol.</p></div></div>
+            <div class="comment-row"><img src="https://randomuser.me/api/portraits/men/13.jpg" class="rounded-full" style="width: 36px; height: 36px;"><div><p style="margin: 0; font-weight: bold; font-size: 0.85rem;">John_Miller <span class="text-gray" style="font-weight: normal; margin-left: 8px;">45 min ago</span></p><p style="margin: 4px 0; color: #d1d5db; font-size: 0.85rem;">The part about women faking it just to go to sleep hit me way too hard. Reality check.</p></div></div>
+            <div class="comment-row"><img src="https://randomuser.me/api/portraits/men/14.jpg" class="rounded-full" style="width: 36px; height: 36px;"><div><p style="margin: 0; font-weight: bold; font-size: 0.85rem;">Tom.Hansen <span class="text-gray" style="font-weight: normal; margin-left: 8px;">1 hr ago</span></p><p style="margin: 4px 0; color: #d1d5db; font-size: 0.85rem;">I've literally been doing this wrong my entire life.</p></div></div>
+            <div class="comment-row"><img src="https://randomuser.me/api/portraits/men/15.jpg" class="rounded-full" style="width: 36px; height: 36px;"><div><p style="margin: 0; font-weight: bold; font-size: 0.85rem;">Ryan.Davis <span class="text-gray" style="font-weight: normal; margin-left: 8px;">1 hr ago</span></p><p style="margin: 4px 0; color: #d1d5db; font-size: 0.85rem;">"She rides his phantom dick" - that is the most savage line I've ever heard in a video.</p></div></div>
+            <button id="seeMoreBtn" class="see-more-btn" onclick="document.getElementById('hidden-comments').style.display='block'; this.style.display='none';">View more comments</button>
+            <div id="hidden-comments" style="display: none;">
+                <div class="comment-row"><img src="https://randomuser.me/api/portraits/men/16.jpg" class="rounded-full" style="width: 36px; height: 36px;"><div><p style="margin: 0; font-weight: bold; font-size: 0.85rem;">Jordan_P <span class="text-gray" style="font-weight: normal; margin-left: 8px;">1 hr ago</span></p><p style="margin: 4px 0; color: #d1d5db; font-size: 0.85rem;">The amount of liquid... wtf. I didn't know the human body could even do that.</p></div></div>
+            </div>
+        </div>
       </div>
     </div>
 
-    <div id="oferta-vsl" style="display: none;" class="py-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 uppercase tracking-tight">
-                Aqui está tudo o que você vai receber...
-            </h2>
-            <div class="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
+    <div id="oferta-vsl" class="video-container" style="display: none;">
+        <div class="py-8">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 uppercase tracking-tight">
+                    Aqui está tudo o que você vai receber...
+                </h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto rounded-full"></div>
+            </div>
+
+            <section class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-full md:w-1/2">
+                    <div class="bg-zinc-800 rounded-lg aspect-square flex items-center justify-center border border-zinc-700">
+                        <span class="text-zinc-500 font-medium"></span>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-xl font-bold text-white mb-4">O Sistema Principal</h3>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-300 text-sm">Acesso completo ao portal de membros.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-300 text-sm">Guia de início rápido passo a passo.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span class="text-gray-300 text-sm">Série de vídeos de execução.</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center">
+                    <div class="bg-red-600 text-white text-[10px] font-bold uppercase py-1 px-2 rounded-full inline-block mb-3">Bônus #1</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Protocolo Alpha</h4>
+                    <p class="text-xs text-gray-400">Dominar o jogo interno e projetar confiança.</p>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center">
+                    <div class="bg-red-600 text-white text-[10px] font-bold uppercase py-1 px-2 rounded-full inline-block mb-3">Bônus #2</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Solução Stamina</h4>
+                    <p class="text-xs text-gray-400">Padrões para controle total e energia.</p>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 text-center">
+                    <div class="bg-red-600 text-white text-[10px] font-bold uppercase py-1 px-2 rounded-full inline-block mb-3">Bônus #3</div>
+                    <h4 class="text-lg font-bold text-white mb-2">Matriz de Conexão</h4>
+                    <p class="text-xs text-gray-400">Gatilhos controversos de respostas automáticas.</p>
+                </div>
+            </section>
+
+            <div class="text-center mb-12">
+                <a href="#link-do-seu-checkout" class="btn-pulse inline-block w-full md:w-auto bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-4 px-8 rounded-lg shadow-[0_0_20px_rgba(34,197,94,0.4)] border-b-4 border-green-800 transition-all uppercase tracking-wide decoration-transparent">
+                    Sim! Quero Garantir Meu Acesso
+                    <span class="block text-xs font-normal normal-case mt-1">Garante 94% de Desconto Hoje</span>
+                </a>
+                <img src="https://cdn.iconscout.com/icon/free/png-256/secure-payment-4903337-4081792.png" alt="Pagamento Seguro" class="h-8 mx-auto mt-3 opacity-70 invert">
+            </div>
+
+            <section class="bg-gradient-to-r from-yellow-600/20 to-yellow-500/10 border border-yellow-500/30 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-20 h-20 shrink-0">
+                    <svg class="w-full h-full text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2 uppercase">Garantia Blindada de 365 Dias</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Você tem um ano inteiro para testar o sistema. Se não vir resultados reais, basta enviar um único e-mail e devolveremos cada centavo. Risco zero.
+                    </p>
+                </div>
+            </section>
         </div>
-
-        <section class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 md:p-10 mb-8 shadow-2xl flex flex-col md:flex-row items-center gap-8">
-            <div class="w-full md:w-1/2">
-                <div class="bg-zinc-800 rounded-lg aspect-square flex items-center justify-center border border-zinc-700">
-                    <span class="text-zinc-500 font-medium">[Imagem do Produto / Mockup 3D]</span>
-                </div>
-            </div>
-            <div class="w-full md:w-1/2">
-                <h3 class="text-2xl font-bold text-white mb-4">O Sistema Principal</h3>
-                <ul class="space-y-3 mb-6">
-                    <li class="flex items-start">
-                        <svg class="w-6 h-6 text-green-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        <span class="text-gray-300">Acesso completo ao portal de membros.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-6 h-6 text-green-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        <span class="text-gray-300">Guia de início rápido passo a passo.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-6 h-6 text-green-500 mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        <span class="text-gray-300">Série de vídeos de execução.</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 text-center">
-                <div class="bg-red-600 text-white text-xs font-bold uppercase py-1 px-3 rounded-full inline-block mb-4">Bônus #1</div>
-                <h4 class="text-xl font-bold text-white mb-2">Protocolo Alpha</h4>
-                <p class="text-sm text-gray-400">Técnicas avançadas para dominar o jogo interno e projetar confiança.</p>
-            </div>
-            <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 text-center">
-                <div class="bg-red-600 text-white text-xs font-bold uppercase py-1 px-3 rounded-full inline-block mb-4">Bônus #2</div>
-                <h4 class="text-xl font-bold text-white mb-2">Solução de Stamina</h4>
-                <p class="text-sm text-gray-400">Padrões de respiração e protocolos para controle total e energia.</p>
-            </div>
-            <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 text-center">
-                <div class="bg-red-600 text-white text-xs font-bold uppercase py-1 px-3 rounded-full inline-block mb-4">Bônus #3</div>
-                <h4 class="text-xl font-bold text-white mb-2">Matriz de Conexão</h4>
-                <p class="text-sm text-gray-400">Os gatilhos controversos para respostas instantâneas e automáticas.</p>
-            </div>
-        </section>
-
-        <div class="text-center mb-16">
-            <a href="#link-do-seu-checkout" class="btn-pulse inline-block w-full md:w-auto bg-green-600 hover:bg-green-500 text-white font-black text-xl md:text-3xl py-5 px-10 rounded-lg shadow-[0_0_20px_rgba(34,197,94,0.4)] border-b-4 border-green-800 transition-all uppercase tracking-wide decoration-transparent hover:text-white">
-                Sim! Quero Garantir Meu Acesso
-                <span class="block text-sm font-normal normal-case mt-1">Garante 94% de Desconto Hoje</span>
-            </a>
-            <img src="https://cdn.iconscout.com/icon/free/png-256/secure-payment-4903337-4081792.png" alt="Pagamento Seguro" class="h-10 mx-auto mt-4 opacity-70 invert">
-        </div>
-
-        <section class="bg-gradient-to-r from-yellow-600/20 to-yellow-500/10 border border-yellow-500/30 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 mb-16">
-            <div class="w-32 h-32 shrink-0">
-                <svg class="w-full h-full text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                </svg>
-            </div>
-            <div>
-                <h3 class="text-2xl font-bold text-white mb-2 uppercase">Garantia Blindada de 365 Dias</h3>
-                <p class="text-gray-300 leading-relaxed">
-                    Você tem um ano inteiro para testar o sistema. Se não vir resultados reais, basta enviar um único e-mail e devolveremos cada centavo. Risco zero. Sem perguntas.
-                </p>
-            </div>
-        </section>
-
-        <section class="mb-4">
-            <div class="text-center mb-8">
-                <h3 class="text-3xl font-bold text-white uppercase tracking-tight">Resultados Reais de Pessoas Reais</h3>
-                <div class="w-16 h-1 bg-red-600 mx-auto rounded-full mt-4"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-lg">
-                    <div class="flex text-yellow-400 mb-2">★★★★★</div>
-                    <p class="text-gray-300 italic mb-4">"Surreal. Mudou completamente minha confiança. Recomendo para qualquer um que esteja em dúvida."</p>
-                    <p class="text-gray-500 text-sm font-bold">- Marcos P.</p>
-                </div>
-                <div class="bg-zinc-900 border border-zinc-800 p-6 rounded-lg">
-                    <div class="flex text-yellow-400 mb-2">★★★★★</div>
-                    <p class="text-gray-300 italic mb-4">"Comecei a ver resultados na segunda semana. Minha esposa percebeu a mudança imediatamente."</p>
-                    <p class="text-gray-500 text-sm font-bold">- Roberto S.</p>
-                </div>
-            </div>
-        </section>
     </div>
-    </main>
+
+  </main>
 
   <footer style="text-align: center; padding: 40px 20px; color: #666; font-size: 0.75rem; border-top: 1px solid #222; margin-top: 20px;">
     <p>&copy; 2026 VideoSite. All rights reserved.</p>
@@ -185,10 +198,33 @@
     const todayStr = new Date().toLocaleDateString('en-US', options);
     document.getElementById('dynamic-date-top').innerText = todayStr;
   </script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const ofertaVsl = document.getElementById('oferta-vsl');
+      const comentariosVsl = document.getElementById('comentarios-vsl');
+
+      if (ofertaVsl && comentariosVsl) {
+        // Observa mudanças de estilo na Div da Oferta feitas pelo VTurb
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'style') {
+              const displayStyle = window.getComputedStyle(ofertaVsl).display;
+              // Se a oferta deixou de ser 'none' (ou seja, apareceu)
+              if (displayStyle !== 'none') {
+                // Esconde os comentários imediatamente
+                comentariosVsl.style.display = 'none';
+              }
+            }
+          });
+        });
+        
+        observer.observe(ofertaVsl, { attributes: true });
+      }
+    });
+  </script>
 
   <script defer src="https://trk.jesscarter.online/ckbyskqbendr.js?93=GwBTIjY8RiQ4MyI3OD0zVQRZXEtTVw8dTw4LFhESCgEGARxLDR8HGhwB"></script>
 
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"8fcd6e2809ad4179a4cbe1aa89dd2389","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"8fcd6e2809ad4179a4cbe1aa89dd2389","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
